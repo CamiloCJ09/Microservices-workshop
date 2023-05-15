@@ -2,11 +2,13 @@ package io.quarkus.workshop.superheroes.villain;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import java.util.Random;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Villain extends PanacheEntity {
@@ -35,5 +37,12 @@ public class Villain extends PanacheEntity {
             ", picture='" + picture + '\'' +
             ", powers='" + powers + '\'' +
             '}';
+    }
+
+    public static Villain findRandom() {
+        long countVillains = count();
+        Random random = new Random();
+        int randomVillain = random.nextInt((int) countVillains);
+        return findAll().page(randomVillain, 1).firstResult();
     }
 }
