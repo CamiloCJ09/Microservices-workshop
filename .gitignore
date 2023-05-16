@@ -2,3 +2,5 @@
 /quarkus-super-heroes/super-heroes/ui-super-heroes/node_modules
 ./.vscode
 /quarkus-super-heroes/super-heroes/extension-version/target/asciidoc/generated/config
+/target/asciidoc/generated
+/quarkus-super-heroes/target/asciidoc/generated/config
