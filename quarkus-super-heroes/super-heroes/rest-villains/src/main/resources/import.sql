@@ -1,3 +1,5 @@
+DROP SEQUENCE IF EXISTS hibernate_sequence;
+CREATE SEQUENCE hibernate_sequence;
 -- tag::adocSQL[]
 INSERT INTO villain(id, name, otherName, picture, powers, level)
 VALUES (nextval('hibernate_sequence'), 'Buuccolo', 'Majin Buu', 'https://www.superherodb.com/pictures2/portraits/10/050/15355.jpg', 'Accelerated Healing, Adaptation, Agility, Flight, Immortality, Intelligence, Invulnerability, Reflexes, Self-Sustenance, Size Changing, Spatial Awareness, Stamina, Stealth, Super Breath, Super Speed, Super Strength, Teleportation', 22);
@@ -1347,3 +1349,7 @@ INSERT INTO villain(id, name, otherName, picture, powers, level)
 VALUES (nextval('hibernate_sequence'), 'Juggernaut (Trion)', 'Cain Marko', 'https://www.superherodb.com/pictures2/portraits/10/050/13970.jpg',
         'Accelerated Healing, Death Touch, Dimensional Travel, Durability, Endurance, Energy Absorption, Energy Beams, Energy Blasts, Energy Manipulation, Energy Resistance, Enhanced Memory, Enhanced Senses, Fire Control, Fire Resistance, Force Fields, Grim Reaping, Heat Generation, Heat Resistance, Immortality, Invulnerability, Longevity, Magic, Magic Resistance, Molecular Manipulation, Possession, Power Augmentation, Power Nullifier, Reality Warping, Resurrection, Self-Sustenance, Size Changing, Stamina, Super Speed, Super Strength, Teleportation, Toxin and Disease Resistance',
         67);
+
+SELECT setval('villain_seq', (SELECT MAX(id) FROM villain));
+ALTER SEQUENCE hibernate_sequence RESTART WITH 571;
+ALTER SEQUENCE villain_seq RESTART WITH 571;
